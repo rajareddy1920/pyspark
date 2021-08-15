@@ -1,0 +1,83 @@
+### Mean of two or more columns in pyspark
+
+from pyspark.sql.functions import col, lit
+
+df1=df_student_detail.select(((col("mathematics_score") + col("science_score")) / lit(2)).alias("mean"))
+df1.show()
+
+### Mean of two or more columns in pyspark
+
+from pyspark.sql.functions import col
+
+df1=df_student_detail.withColumn("mean_of_col", (col("mathematics_score")+col("science_score"))/2)
+df1.show()
+
+### Sum of two or more columns in pyspark
+
+from pyspark.sql.functions import col
+
+df1=df_student_detail.select(((col("mathematics_score") + col("science_score"))).alias("sum"))
+df1.show()
+
+### Sum of two or more columns in pyspark
+
+from pyspark.sql.functions import col
+
+df1=df_student_detail.withColumn("sum", col("mathematics_score")+col("science_score"))
+df1.show()
+
+### Row wise mean in pyspark
+
+from pyspark.sql.functions import col, lit
+
+df1=df_student_detail.select(((col("mathematics_score") + col("science_score")) / lit(2)).alias("mean"))
+df1.show()
+
+### Row wise mean in pyspark
+
+from pyspark.sql.functions import col
+
+df1=df_student_detail.withColumn("mean", (col("mathematics_score")+col("science_score"))/2)
+df1.show()
+
+### Row wise sum in pyspark
+
+from pyspark.sql.functions import col
+
+df1=df_student_detail.select(((col("mathematics_score") + col("science_score"))).alias("sum"))
+df1.show()
+
+### Row wise sum in pyspark
+
+from pyspark.sql.functions import col
+
+df1=df_student_detail.withColumn("sum", col("mathematics_score")+col("science_score"))
+df1.show()
+
+### Row wise minimum in pyspark
+
+from pyspark.sql.functions import col, least
+
+df1=df_student_detail.select((least(col("mathematics_score"),col("science_score"))).alias("minimum"))
+df1.show()
+
+### Row wise minimum in pyspark
+
+from pyspark.sql.functions import least
+
+df1=df_student_detail.withColumn('minimum', least('mathematics_score', 'science_score'))
+df1.show()
+
+### Row wise maximum in pyspark
+
+from pyspark.sql.functions import col, greatest
+
+df1=df_student_detail.select((greatest(col("mathematics_score"),col("science_score"))).alias("maximum"))
+df1.show()
+
+### Row wise maximum in pyspark
+
+from pyspark.sql.functions import greatest
+
+df1=df_student_detail.withColumn('maximum', greatest('mathematics_score', 'science_score'))
+df1.show()
